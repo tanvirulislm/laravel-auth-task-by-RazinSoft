@@ -1,61 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel User Authentication and Profile Management Task
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a submission for the Intern Task by RazinSoft Limited. It features a complete user authentication system built from scratch without any starter kits, a user profile management system with file uploads, and a page to list all created profiles. The application is built using Laravel and styled with Tailwind CSS.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Custom Authentication: A complete user authentication system (register, login, logout) built using Laravel's built-in `Auth` class.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Route Protection: Routes for the dashboard and profile management are protected using Laravel's `auth` middleware, ensuring only logged-in users can access them.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Profile Management:** Authenticated users can create a detailed profile with 8 fields, including a profile image.
 
-## Learning Laravel
+**File Uploads:** Handles profile image uploads, validates them (mimes: `jpg,png`, max `2MB`), and stores them in the `public/storage/profiles` directory.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Eloquent ORM:** Uses Eloquent for all database interactions and relationships between `Users` and `Profiles`.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Blade Templating:** All frontend views are created using Laravel's Blade templating engine, with a master layout for consistency.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Security:** Implements CSRF protection on all forms and securely hashes user passwords.
 
-## Laravel Sponsors
+**Profile Listing:** A page to display all user profiles in a card layout, featuring their name, email, phone, and profile image thumbnail. The database query is optimized to prevent N+1 issues.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Getting Started
 
-### Premium Partners
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Prerequisites
 
-## Contributing
+-   PHP >= 8.1
+-   Composer
+-   Node.js & NPM
+-   A database server (e.g., MySQL, MariaDB)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Installation
 
-## Code of Conduct
+### 1. Clone the repository:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/tanvirulislm/laravel-auth-task-by-RazinSoft
+cd laravel-auth-task-by-RazinSoft
+```
 
-## Security Vulnerabilities
+### 2. Install PHP dependencies:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+```
 
-## License
+Install NPM dependencies:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```Bash
+npm install && npm run build
+```
+
+### 3. Create your environment file:
+
+Copy the `.env.example` file to a new file named `.env`.
+
+```Bash
+
+cp .env.example .env
+```
+
+### 4. Generate an application key:
+
+```Bash
+php artisan key:generate
+```
+
+### 5. Configure the database:
+
+Open your `.env` file and update the `DB_*` variables with your database credentials.
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+```
+
+### 6. Run database migrations:
+
+This will create the
+`users` and `profiles` tables in your database.
+
+```Bash
+php artisan migrate
+```
+
+### 7. Create the storage link:
+
+This is essential for making uploaded profile images publicly accessible.
+
+```Bash
+php artisan storage:link
+```
+
+### 8. Serve the application:
+
+```Bash
+php artisan serve
+```
+
+The application will be available at `http://127.0.0.1:8000.`
+
+## How to Use the Application
+
+### 1. Register a new user:
+
+-   Navigate to the `/register` page.
+-   Fill in your name, email, and password (must be at least 8 characters) and submit the form.
+-   You will be redirected to the login page upon successful registration.
+
+### 2. Login:
+
+-   Navigate to the `/login` page.
+-   Enter your credentials.
+-   Upon successful login, you will be redirected to your dashboard.
+
+### 3. Create a Profile:
+
+-   From the dashboard or the header, click on "Create Profile".
+-   You will be taken to a form with 8 fields.
+-   Fill out all the required details and upload a profile image.
+-   After submission, you will be redirected to your profile view page.
+
+### 4. View Profiles:
+
+-   From the dashboard, click on "View Profiles".
+-   This will take you to a page listing all user profiles in the database.
+-   You can click the "View Profile" button on any card to see the full details of that profile.
