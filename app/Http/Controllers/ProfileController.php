@@ -53,7 +53,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $profiles = Profile::all();
+        $profiles = Profile::with('user')->get();
         return view('profiles.index', compact('profiles'));
     }
 }
