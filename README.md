@@ -4,9 +4,9 @@ This project is a submission for the Intern Task by RazinSoft Limited. It featur
 
 ## Features
 
-Custom Authentication: A complete user authentication system (register, login, logout) built using Laravel's built-in `Auth` class.
+**Custom Authentication:** A complete user authentication system (register, login, logout) built using Laravel's built-in `Auth` class.
 
-Route Protection: Routes for the dashboard and profile management are protected using Laravel's `auth` middleware, ensuring only logged-in users can access them.
+**Route Protection:** Routes for the dashboard and profile management are protected using Laravel's `auth` middleware, ensuring only logged-in users can access them.
 
 **Profile Management:** Authenticated users can create a detailed profile with 8 fields, including a profile image.
 
