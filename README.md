@@ -46,13 +46,13 @@ cd laravel-auth-task-by-RazinSoft
 composer install
 ```
 
-Install NPM dependencies:
+### 3. Install NPM dependencies:
 
 ```Bash
 npm install && npm run build
 ```
 
-### 3. Create your environment file:
+### 4. Create your environment file:
 
 Copy the `.env.example` file to a new file named `.env`.
 
@@ -61,13 +61,13 @@ Copy the `.env.example` file to a new file named `.env`.
 cp .env.example .env
 ```
 
-### 4. Generate an application key:
+### 5. Generate an application key:
 
 ```Bash
 php artisan key:generate
 ```
 
-### 5. Configure the database:
+### 6. Configure the database:
 
 Open your `.env` file and update the `DB_*` variables with your database credentials.
 
@@ -80,7 +80,7 @@ DB_USERNAME=your_database_user
 DB_PASSWORD=your_database_password
 ```
 
-### 6. Run database migrations:
+### 7. Run database migrations:
 
 This will create the
 `users` and `profiles` tables in your database.
@@ -89,7 +89,7 @@ This will create the
 php artisan migrate
 ```
 
-### 7. Create the storage link:
+### 8. Create the storage link:
 
 This is essential for making uploaded profile images publicly accessible.
 
@@ -97,7 +97,7 @@ This is essential for making uploaded profile images publicly accessible.
 php artisan storage:link
 ```
 
-### 8. Serve the application:
+### 9. Serve the application:
 
 ```Bash
 php artisan serve
